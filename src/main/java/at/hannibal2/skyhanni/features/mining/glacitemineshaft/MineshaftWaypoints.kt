@@ -44,9 +44,7 @@ object MineshaftWaypoints {
     fun onWorldChange() {
         waypoints.clear()
         isWorldLoaded = false
-        MineshaftEntranceDebug.record {
-            "WORLD_RESET world=${System.identityHashCode(MinecraftCompat.localWorldOrNull)}"
-        }
+        MineshaftEntranceDebug.recordWorldReset()
     }
 
     @HandleEvent
@@ -151,16 +149,20 @@ object MineshaftWaypoints {
 
     @HandleEvent
     fun onRenderWorld(event: SkyHanniRenderWorldEvent) {
-        if (waypoints.isEmpty()) return
-
-        waypoints
-            .filter {
+        val renderWaypoints = if (waypoints.isEmpty()) {
+            emptyList()
+        } else {
+            waypoints.filter {
                 (it.isCorpse && config.corpseLocator.enabled) || (!it.isCorpse && config.mineshaftWaypoints.enabled)
             }
-            .forEach {
-                event.drawWaypointFilled(it.location, it.waypointType.color.toColor(), seeThroughBlocks = true)
-                event.drawDynamicText(it.location, "§${if (it.isLootedCorpse) "a" else "e"}${it.waypointType.display}", 1.0)
-            }
+        }
+
+        MineshaftEntranceDebug.recordRenderInput(renderWaypoints)
+
+        renderWaypoints.forEach {
+            event.drawWaypointFilled(it.location, it.waypointType.color.toColor(), seeThroughBlocks = true)
+            event.drawDynamicText(it.location, "§${if (it.isLootedCorpse) "a" else "e"}${it.waypointType.display}", 1.0)
+        }
     }
 
     private fun addEntranceWaypoints(
