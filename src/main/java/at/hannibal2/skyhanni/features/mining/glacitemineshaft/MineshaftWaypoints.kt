@@ -44,31 +44,63 @@ object MineshaftWaypoints {
     fun onWorldChange() {
         waypoints.clear()
         isWorldLoaded = false
+        MineshaftEntranceDebug.record {
+            "WORLD_RESET world=${System.identityHashCode(MinecraftCompat.localWorldOrNull)}"
+        }
     }
 
     @HandleEvent
     fun onIslandJoin(event: IslandJoinEvent) {
+        MineshaftEntranceDebug.record {
+            "ISLAND_JOIN island=${event.island} previous=${event.previousIsland}"
+        }
         if (event.island != IslandType.MINESHAFT) return
 
         val spawnLocation = LocationUtils.getBlockBelowPlayer()
         val direction = MinecraftCompat.localPlayerOrThrow.direction.unitVec3i
 
-        addEntranceWaypoints(spawnLocation, direction)
+        MineshaftEntranceDebug.record {
+            "ISLAND_CAPTURE player=${LocationUtils.playerLocationOrNull()} " +
+                "block=$spawnLocation direction=$direction"
+        }
+        addEntranceWaypoints(spawnLocation, direction, source = "island-join")
     }
 
     @HandleEvent(onlyOnIsland = IslandType.MINESHAFT)
     fun onPacketReceived(event: PacketReceivedEvent) {
-        if (isWorldLoaded) return
+        if (isWorldLoaded) {
+            if (event.packet is ClientboundPlayerPositionPacket) {
+                MineshaftEntranceDebug.record {
+                    "POSITION_SKIPPED packetRef=${System.identityHashCode(event.packet)} " +
+                        "reason=chunk-gate-closed"
+                }
+            }
+            return
+        }
 
         when (event.packet) {
-            is ClientboundLevelChunkWithLightPacket -> isWorldLoaded = true
+            is ClientboundLevelChunkWithLightPacket -> {
+                isWorldLoaded = true
+                MineshaftEntranceDebug.record { "CHUNK_GATE_CLOSED" }
+            }
+
             is ClientboundPlayerPositionPacket -> {
-                if (event.packet.relatives.isNotEmpty()) return
+                if (event.packet.relatives.isNotEmpty()) {
+                    MineshaftEntranceDebug.record {
+                        "POSITION_SKIPPED packetRef=${System.identityHashCode(event.packet)} " +
+                            "reason=relative-flags"
+                    }
+                    return
+                }
 
                 val spawnLocation = event.packet.change.position.toLorenzVec().add(y = -1).roundToBlock()
                 val direction = Direction.fromYRot(event.packet.change.yRot.toDouble()).unitVec3i
 
-                addEntranceWaypoints(spawnLocation, direction)
+                addEntranceWaypoints(
+                    spawnLocation,
+                    direction,
+                    source = "position-packet:${System.identityHashCode(event.packet)}",
+                )
             }
         }
     }
@@ -98,6 +130,7 @@ object MineshaftWaypoints {
     @HandleEvent
     fun onKeyPress(event: KeyPressEvent) {
         if (MinecraftCompat.screen != null) return
+        if (MineshaftEntranceDebug.matchesKey(event.keyCode)) return
         if (event.keyCode != config.shareWaypointLocation) return
         if (timeLastShared.passedSince() < 500.milliseconds) return
 
@@ -130,10 +163,23 @@ object MineshaftWaypoints {
             }
     }
 
-    private fun addEntranceWaypoints(spawnLocation: LorenzVec, direction: Vec3i) {
+    private fun addEntranceWaypoints(
+        spawnLocation: LorenzVec,
+        direction: Vec3i,
+        source: String,
+    ) {
+        MineshaftEntranceDebug.record {
+            "ENTRANCE_CANDIDATE source=$source location=$spawnLocation " +
+                "entranceEnabled=${config.mineshaftWaypoints.entranceLocation} " +
+                "renderEnabled=${config.mineshaftWaypoints.enabled}"
+        }
+
         if (config.mineshaftWaypoints.entranceLocation) {
             waypoints.removeIf { it.waypointType == MineshaftWaypointType.ENTRANCE }
             waypoints.add(MineshaftWaypoint(waypointType = MineshaftWaypointType.ENTRANCE, location = spawnLocation))
+            MineshaftEntranceDebug.record {
+                "ENTRANCE_STORED source=$source location=$spawnLocation"
+            }
         }
 
         if (config.mineshaftWaypoints.ladderLocation) {
