@@ -72,7 +72,7 @@ object AbiphoneFeatures {
     fun onTabCompletion(event: TabCompletionEvent) {
         if (!config.commands.tabComplete.call) return
         if (event.command != "call") return
-        abiphoneContacts?.let { event.addSuggestions(it) }
+        abiphoneContacts?.let { event.addSuggestionsContaining(it) }
     }
 
     @HandleEvent

@@ -5,13 +5,13 @@ import at.hannibal2.skyhanni.SkyHanniMod.launch
 import at.hannibal2.skyhanni.api.event.HandleEvent
 import at.hannibal2.skyhanni.config.commands.CommandRegistrationEvent
 import at.hannibal2.skyhanni.config.commands.brigadier.BrigadierArguments
-import at.hannibal2.skyhanni.config.commands.brigadier.BrigadierUtils
 import at.hannibal2.skyhanni.config.commands.brigadier.arguments.LorenzVecArgumentType
 import at.hannibal2.skyhanni.data.IslandGraphs
 import at.hannibal2.skyhanni.data.IslandGraphs.pathFind
 import at.hannibal2.skyhanni.data.model.graph.GraphNode
 import at.hannibal2.skyhanni.data.model.graph.GraphNodeTag
 import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
+import at.hannibal2.skyhanni.test.command.ErrorManager
 import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.GraphUtils
 import at.hannibal2.skyhanni.utils.NumberUtil.roundTo
@@ -24,6 +24,10 @@ import at.hannibal2.skyhanni.utils.chat.TextHelper.send
 import at.hannibal2.skyhanni.utils.collection.CollectionUtils.sorted
 import at.hannibal2.skyhanni.utils.compat.hover
 import at.hannibal2.skyhanni.utils.coroutines.CoroutineSettings
+import com.mojang.brigadier.suggestion.SuggestionProvider
+import com.mojang.brigadier.suggestion.Suggestions
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource
+import java.util.concurrent.CompletableFuture
 
 @SkyHanniModule
 object NavigationHelper {
@@ -161,7 +165,15 @@ object NavigationHelper {
                 pathFind(location, "Custom Goal", condition = { true })
                 ChatUtils.chat("Started Navigating to custom goal at §f${location.toLocalFormat()}", messageId = messageId)
             }
-            argCallback("search", BrigadierArguments.greedyString(), BrigadierUtils.dynamicSuggestionProvider { getNames() }) {
+            argCallback(
+                "search",
+                BrigadierArguments.greedyString(),
+                SuggestionProvider<FabricClientCommandSource> { _, builder ->
+                    val query = builder.remaining
+                    getNames().filter { it.contains(query, ignoreCase = true) }.forEach { builder.suggest(it) }
+                    builder.buildFuture()
+                },
+            ) {
                 doCommandAsync(it.lowercase().removeColor())
             }
             literalCallback("stop") {
@@ -169,6 +181,32 @@ object NavigationHelper {
             }
             simpleCallback {
                 doCommandAsync("")
+            }
+        }
+    }
+
+    fun prioritizeSuggestions(
+        original: CompletableFuture<Suggestions>,
+        beforeCursor: String,
+    ): CompletableFuture<Suggestions> {
+        val names = getNames().toSet()
+        val query = beforeCursor.substringAfter(' ')
+
+        return original.thenApply { suggestions ->
+            try {
+                val orderedNames = suggestions.list
+                    .filter { it.text in names }
+                    .sortedBy { !it.text.startsWith(query, ignoreCase = true) }
+                    .iterator()
+
+                val ordered = suggestions.list.map { suggestion ->
+                    if (suggestion.text in names) orderedNames.next() else suggestion
+                }
+
+                Suggestions(suggestions.range, ordered)
+            } catch (error: Throwable) {
+                ErrorManager.logErrorWithData(error, "Failed to order navigation suggestions")
+                suggestions
             }
         }
     }

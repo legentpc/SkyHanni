@@ -21,11 +21,15 @@ object GetFromSacksTabComplete {
         if (GetFromSackApi.commands.none { event.isCommand(it) }) return
         if (!event.leftOfCursor.contains(" ")) return
 
-        val query = event.lastWord
-        val matching = SackApi.sackListNames
-            .map { it.replace(' ', '_') }
-            .filter { it.contains(query, ignoreCase = true) }
-        event.addSuggestionsUnchecked(matching)
+        val suggestions = SackApi.sackListNames.map { it.replace(' ', '_') }
+        val query = if (event.fullText.contains(' ')) {
+            event.fullText.substringAfterLast(' ')
+        } else {
+            event.lastWord
+        }
+        val matching = suggestions.filter { it.contains(query, ignoreCase = true) }
+        val hasBaseline = suggestions.any { it.contains(event.lastWord, ignoreCase = true) }
+        event.addSuggestionsWithBaseline(matching, hasBaseline = hasBaseline)
     }
 
     @HandleEvent(onlyOnSkyblock = true)
