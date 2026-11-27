@@ -30,7 +30,6 @@ import at.hannibal2.skyhanni.utils.repopatterns.RepoPattern
 object GeorgeHelper {
 
     private val config get() = SkyHanniMod.feature.misc.pets.tamingSixty
-    private val useIndependentWiki get() = SkyHanniMod.feature.misc.commands.betterWiki.useIndependent
     private const val SPAWN_EGG_SLOT = 41
 
     private val patternGroup = RepoPattern.group("george.taming-sixty")
@@ -86,15 +85,15 @@ object GeorgeHelper {
 
     private fun findCheapestPet(tierName: String, petName: String, tierColorCodes: String): PetInfo {
         val colorlessPetName = petName.removeColor().uppercase().replace(" ", "_")
-        val tierNumber = LorenzRarity.getByName(tierName.uppercase().replace(" ", "_"))?.id ?: 0
+        val tierNumber = LorenzRarity.getByName(tierName.uppercase().replace(" ", "_"))?.neuPetIndex ?: 0
 
         val (cheapestTier, cheapestPrice) = findCheapestTier(colorlessPetName, tierNumber)
 
         val stackRenderableInternalName = petInternalName(colorlessPetName, tierNumber).toInternalName()
         val stack = Renderable.item(stackRenderableInternalName)
 
-        val rarityColorCode = LorenzRarity.getById(cheapestTier)?.chatColorCode ?: tierColorCodes
-        val formattedPet = "${rarityColorCode}${LorenzRarity.getById(cheapestTier)?.formattedName} $petName"
+        val rarityColorCode = LorenzRarity.fromNeuPetIndex(cheapestTier)?.chatColorCode ?: tierColorCodes
+        val formattedPet = "${rarityColorCode}${LorenzRarity.fromNeuPetIndex(cheapestTier)?.formattedName} $petName"
 
         val clickableRenderable = if (cheapestPrice > 0) {
             val tips = mutableListOf(
@@ -110,12 +109,12 @@ object GeorgeHelper {
                 onLeftClick = { HypixelCommands.auctionSearch("] $petName") },
             )
         } else {
-            val wiki = if (useIndependentWiki) WikiManager.data.unofficial else WikiManager.data.official
+            val wiki = WikiManager.wiki
             Renderable.clickable(
                 text = " §7- $formattedPet: §cNo price found. §eSee the ${wiki.name}.",
                 tips = listOf("§eView the ${wiki.name} article for $formattedPet§e."),
                 onLeftClick = {
-                    OSUtils.openBrowser(WikiManager.getSearchUrl("$petName Pet", useIndependent = useIndependentWiki))
+                    OSUtils.openBrowser(WikiManager.getSearchUrl("$petName Pet"))
                 },
             )
         }

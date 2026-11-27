@@ -6,14 +6,10 @@ plugins {
     id("dev.kikugie.stonecutter")
 }
 
+val projectVersion = providers.fileContents(layout.projectDirectory.file("buildSrc/PROJECT_VERSION")).asText.map(String::trim)
+
 allprojects {
     group = "at.hannibal2.skyhanni"
-
-    val buildToolsPath = when (name) {
-        "SkyHanni" -> layout.projectDirectory.dir("buildTools")
-        "annotation-processors", "detekt" -> layout.projectDirectory.dir("../buildTools")
-        else -> layout.projectDirectory.dir("../../buildTools")
-    }
 
     /**
      * The version of the project.
@@ -21,7 +17,7 @@ allprojects {
      * Beta version
      * Bugfix version
      */
-    version = providers.fileContents(buildToolsPath.file("PROJECT_VERSION")).asText.map { it.trim() }.get()
+    version = projectVersion.get()
 
     repositories {
         mavenCentral()
@@ -33,8 +29,7 @@ allprojects {
                 maven("https://maven.fabricmc.net")
             }
             filter {
-                includeGroup("net.fabricmc")
-                includeGroup("net.fabricmc.fabric-api")
+                includeGroupAndSubgroups("net.fabricmc")
             }
         }
 
@@ -58,7 +53,7 @@ allprojects {
             }
         }
 
-        // libautoupdate and shots
+        // libautoupdate
         exclusiveContent {
             forRepository {
                 maven("https://repo.nea.moe/releases")
@@ -68,19 +63,18 @@ allprojects {
             }
         }
 
-        // moulconfig and a few detekt rules
+        // MoulConfig and a few Detekt rules
         exclusiveContent {
             forRepositories(
                 repositories.mavenLocal(),
                 repositories.maven("https://maven.notenoughupdates.org/releases"),
             )
             filter {
-                includeGroup("org.notenoughupdates")
-                includeGroup("org.notenoughupdates.moulconfig")
+                includeGroupAndSubgroups("org.notenoughupdates")
             }
         }
 
-        // Hypixel mod api
+        // Hypixel Mod API
         exclusiveContent {
             forRepository {
                 maven("https://repo.hypixel.net/repository/Hypixel")
@@ -100,28 +94,29 @@ allprojects {
             }
         }
 
-        // Rei for compat plugin
+        // REI for compat plugin
         exclusiveContent {
             forRepository {
                 maven("https://maven.shedaniel.me")
             }
             filter {
-                includeGroup("me.shedaniel")
                 includeGroup("dev.architectury")
-                includeGroup("me.shedaniel.cloth")
+                includeGroupAndSubgroups("me.shedaniel")
             }
         }
 
-        maven("https://jitpack.io") {
-            // NotEnoughUpdates (compiled against), Changelog builder, Preprocessor, Discord IPC
-            content {
-                includeGroupByRegex("(com|io)\\.github\\..*")
+        exclusiveContent {
+            forRepositories(
+                repositories.maven("https://maven.azureaaron.net/releases"),
+            )
+            filter {
+                includeGroupAndSubgroups("net.azureaaron")
             }
         }
     }
 }
 
-stonecutter active "26.1"
+stonecutter active "26.2"
 
 stonecutter handlers {
     configure("fsh", "vsh") {
@@ -130,5 +125,38 @@ stonecutter handlers {
 }
 
 stonecutter parameters {
+    replacements {
+        string(current.parsed < "26.2") {
+            replace("net.minecraft.world.entity.monster.cubemob.MagmaCube", "net.minecraft.world.entity.monster.MagmaCube")
+            replace("net.minecraft.world.entity.monster.cubemob.Slime", "net.minecraft.world.entity.monster.Slime")
+
+            val dyeColors = mapOf(
+                "black" to "BLACK",
+                "blue" to "BLUE",
+                "brown" to "BROWN",
+                "cyan" to "CYAN",
+                "gray" to "GRAY",
+                "green" to "GREEN",
+                "lightBlue" to "LIGHT_BLUE",
+                "lightGray" to "LIGHT_GRAY",
+                "lime" to "LIME",
+                "magenta" to "MAGENTA",
+                "orange" to "ORANGE",
+                "pink" to "PINK",
+                "purple" to "PURPLE",
+                "red" to "RED",
+                "white" to "WHITE",
+                "yellow" to "YELLOW",
+            )
+            dyeColors.forEach { (lower, upper) ->
+                replace("DYE.$lower()", "${upper}_DYE")
+                replace("WOOL.$lower()", "${upper}_WOOL")
+                replace("STAINED_GLASS.$lower()", "${upper}_STAINED_GLASS")
+                replace("STAINED_GLASS_PANE.$lower()", "${upper}_STAINED_GLASS_PANE")
+                replace("DYED_TERRACOTTA.$lower()", "${upper}_TERRACOTTA")
+            }
+        }
+    }
+
     filters.include("**/*.fsh", "**/*.vsh")
 }

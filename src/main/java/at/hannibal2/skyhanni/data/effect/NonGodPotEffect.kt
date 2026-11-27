@@ -142,14 +142,14 @@ enum class NonGodPotEffect(
     PEST_REPELLENT(
         "Pest Repellent I",
         displayName = "§6Pest Repellent I§r",
-        effectGainedMessage = "YUM!  Pests will now spawn 2x less while you break crops for the next 60m!",
+        effectGainedMessage = "YUM! [\uE07F\uE018] Pests will now spawn 2x less while you break crops for the next 60m!",
         effectDuration = 1.hours,
         effectChangeType = EffectDurationChangeType.SET,
     ),
     PEST_REPELLENT_MAX(
         "Pest Repellent II",
         displayName = "§6Pest Repellent II",
-        effectGainedMessage = "YUM!  Pests will now spawn 4x less while you break crops for the next 60m!",
+        effectGainedMessage = "YUM! [\uE07F\uE018] Pests will now spawn 4x less while you break crops for the next 60m!",
         effectDuration = 1.hours,
         effectChangeType = EffectDurationChangeType.SET,
     ),
@@ -176,6 +176,14 @@ enum class NonGodPotEffect(
         "Chilled Pristine Potato I",
         displayName = "§fChilled Pristine Potato I",
     ),
+    FIESTA_FLASK(
+        "Fiesta Flask I",
+        displayName = "§6Fiesta Flask I",
+    ),
+    SCATHA_IN_A_BOTTLE(
+        "Scatha-in-a-Bottle I",
+        displayName = "§dScatha-in-a-Bottle I",
+    ),
 
     LUSHLILAC_BONBON(
         "Lushlilac Bonbon",
@@ -196,6 +204,10 @@ enum class NonGodPotEffect(
     CANDYCOMB(
         "Candycomb",
         displayName = "§r§5Candycomb§r§f",
+    ),
+    BRINE_TONIC(
+        "Brine Tonic",
+        displayName = "§r§5Brine Tonic§r§f",
     ),
     ;
 

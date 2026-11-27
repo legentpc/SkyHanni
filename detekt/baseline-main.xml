@@ -1,6 +1,8 @@
-<?xml version="1.0" ?>
+<?xml version='1.0' encoding='UTF-8'?>
 <SmellBaseline>
-  <ManuallySuppressedIssues/>
+  <ManuallySuppressedIssues>
+    <ID>MayBeConst:MutationsWebsite.kt$MutationsWebsite$private val link = "https://skymutations.eu/"</ID>
+  </ManuallySuppressedIssues>
   <CurrentIssues>
     <ID>ArrayPrimitive:LorenzVec.kt:Array&lt;Double&gt;</ID>
     <ID>ArrayPrimitive:LorenzVec.kt:LorenzVec$Array&lt;Double&gt;</ID>
@@ -1678,15 +1680,6 @@
     <ID>PrivateEventListener:HolographicEntities.kt:HolographicEntities$@HandleEvent fun onRenderWorld</ID>
     <ID>PrivateEventListener:HoppityAchievements.kt:HoppityAchievements$@HandleEvent fun onAchievementRegistration</ID>
     <ID>PrivateEventListener:HoppityAchievements.kt:HoppityAchievements$@HandleEvent(onlyOnSkyblock = true) fun onInventoryFullyOpened</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent fun onInventoryFullyOpened</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent fun onInventoryUpdated</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent fun onRepoReload</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(InventoryCloseEvent::class) fun onInventoryClose</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(IslandChangeEvent::class) fun onIslandChange</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(onlyOnSkyblock = true) fun onCommandSend</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(onlyOnSkyblock = true, priority = HandleEvent.HIGH) fun onChat</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(priority = HIGHEST) fun onEggFound</ID>
-    <ID>PrivateEventListener:HoppityApi.kt:HoppityApi$@HandleEvent(priority = HandleEvent.HIGH) fun onSlotClick</ID>
     <ID>PrivateEventListener:HoppityCallWarning.kt:HoppityCallWarning$@HandleEvent fun onConfigLoad</ID>
     <ID>PrivateEventListener:HoppityCallWarning.kt:HoppityCallWarning$@HandleEvent fun onGuiRenderOverlay</ID>
     <ID>PrivateEventListener:HoppityCallWarning.kt:HoppityCallWarning$@HandleEvent fun onSecondPassed</ID>
@@ -2806,13 +2799,8 @@
     <ID>PrivateEventListener:SkyHanniEvents.kt:SkyHanniEvents$@HandleEvent fun onSecondPassed</ID>
     <ID>PrivateEventListener:SkyHanniEvents.kt:SkyHanniEvents$@HandleEvent(priority = HandleEvent.HIGHEST) fun onRepoReload</ID>
     <ID>PrivateEventListener:SkyHanniItemRenderCoordinator.kt:SkyHanniItemRenderCoordinator$@HandleEvent fun onDebugDataCollect</ID>
-    <ID>PrivateEventListener:SkyHanniMod.kt:SkyHanniMod$@HandleEvent fun onClientShutdown</ID>
-    <ID>PrivateEventListener:SkyHanniMod.kt:SkyHanniMod$@HandleEvent fun onCommandRegistration</ID>
-    <ID>PrivateEventListener:SkyHanniMod.kt:SkyHanniMod$@HandleEvent fun onRenderShutdown</ID>
-    <ID>PrivateEventListener:SkyHanniMod.kt:SkyHanniMod$@HandleEvent fun onTick</ID>
     <ID>PrivateEventListener:SkyHanniRepoManager.kt:SkyHanniRepoManager$@HandleEvent fun onCommandRegistration</ID>
     <ID>PrivateEventListener:SkyHanniRepoManager.kt:SkyHanniRepoManager$@HandleEvent fun onRepoReload</ID>
-    <ID>PrivateEventListener:SkyHanniRoundedShapeRenderManager.kt:SkyHanniRoundedShapeRenderManager$@HandleEvent fun onDebugDataCollect</ID>
     <ID>PrivateEventListener:SkyHanniTracker.kt:SkyHanniTracker.Companion$@HandleEvent fun onTick</ID>
     <ID>PrivateEventListener:SkyMartCopperPrice.kt:SkyMartCopperPrice$@HandleEvent fun onChestGuiRender</ID>
     <ID>PrivateEventListener:SkyMartCopperPrice.kt:SkyMartCopperPrice$@HandleEvent fun onConfigFix</ID>
@@ -3452,161 +3440,6 @@
     <ID>TooManyFunctions:RegexUtils.kt:RegexUtils</ID>
     <ID>TooManyFunctions:TextCompat.kt:at.hannibal2.skyhanni.utils.compat.TextCompat.kt</ID>
     <ID>TooManyFunctions:WorldRenderUtils.kt:WorldRenderUtils</ID>
-    <ID>TrailingCommaOnDeclarationSite:About.kt:About$UpdateStream</ID>
-    <ID>TrailingCommaOnDeclarationSite:ActualGemstonePowderDisplay.kt:ActualGemstonePowderDisplay$PowderStyle</ID>
-    <ID>TrailingCommaOnDeclarationSite:ActualGemstonePowderDisplay.kt:ActualGemstonePowderDisplay.AdditiveFactor$( override val name: String, override val factors: List&lt;MultiplierFactor&gt; = emptyList() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ActualGemstonePowderDisplay.kt:ActualGemstonePowderDisplay.PowderStyle$( val indent: String, val labelColor: String, val valueColor: String )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ActualGemstonePowderDisplay.kt:ActualGemstonePowderDisplay.SimpleFactor$( override val name: String, override val bonusFraction: Double, override val factors: List&lt;MultiplierFactor&gt; = emptyList() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:AdvancedPlayerList.kt:AdvancedPlayerList$CrimsonIsleFaction</ID>
-    <ID>TrailingCommaOnDeclarationSite:AdvancedPlayerList.kt:AdvancedPlayerList$SocialIcon</ID>
-    <ID>TrailingCommaOnDeclarationSite:AnimatedBounceStorage.kt:AnimatedBounceDefinition$( private val axes: Map&lt;Axis, AxisBounceDefinition&gt; = emptyMap() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:AnimatedFrameStorage.kt:FrameTickRateProvider$( private val provider: (AnimatedFrame) -&gt; Int = { it.transitionTicks } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:AnimatedItemStackRenderable.kt:AnimatedItemStackRenderable.Companion$( config: AnimatedItemRenderableConfig&lt;ItemStackAnimatedFrame&gt;.() -&gt; Unit = { } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ApiInternalUtils.kt:ApiInternalUtils$( file: File, crossinline entityHandler: (HttpEntity?) -&gt; Long? = { it.readEntityToFile(file) }, crossinline requestFactory: ApiStaticPath.() -&gt; Req = { buildRequest { addHeader("Accept-Encoding", "gzip") } } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ApiResponse.kt:JsonApiResponse$( override val success: Boolean, override val message: String? = null, override var data: T? = null )</ID>
-    <ID>TrailingCommaOnDeclarationSite:BetterContainers.kt:BetterContainers$( backgroundStyle: LegacyBetterContainers.BackgroundStyle )</ID>
-    <ID>TrailingCommaOnDeclarationSite:BetterContainers.kt:BetterContainers$( handlerInventory: Container, horizontalTexMult: Int, verticalTexMult: Int, bufferedImageNew: BufferedImage )</ID>
-    <ID>TrailingCommaOnDeclarationSite:BlockStrengthGuide.kt:BlockStrengthGuide$DisplayOres</ID>
-    <ID>TrailingCommaOnDeclarationSite:BouncingRenderable.kt:BouncingRenderable.Companion$( root: Renderable, config: AnimatedItemRenderableConfig&lt;C&gt;.() -&gt; Unit = { } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:BroodmotherFeatures.kt:BroodmotherFeatures$StageEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:CTMUtils.kt:CTMUtils.CTMData$( val up: Boolean, val right: Boolean, val down: Boolean, val left: Boolean, val upLeft: Boolean, val upRight: Boolean, val downRight: Boolean, val downLeft: Boolean )</ID>
-    <ID>TrailingCommaOnDeclarationSite:CakeCounterConfig.kt:CakeCounterConfig$OfflineStatsMode</ID>
-    <ID>TrailingCommaOnDeclarationSite:CakeCounterConfig.kt:CakeCounterConfig$OfflineTrackingMode</ID>
-    <ID>TrailingCommaOnDeclarationSite:CarnivalGoal.kt:CarnivalGoal.Companion$GoalType</ID>
-    <ID>TrailingCommaOnDeclarationSite:CarnivalZombieShootout.kt:CarnivalZombieShootout$ZombieType</ID>
-    <ID>TrailingCommaOnDeclarationSite:ChatProgressUpdates.kt:ChatProgressUpdates.ChatProgressCategory$( label: String, block: (ChatProgressUpdates) -&gt; Unit )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ChatProgressUpdates.kt:ChatProgressUpdates.ChatProgressCategory$( label: String, block: suspend (ChatProgressUpdates) -&gt; Unit )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ClickedBlockType.kt:ClickedBlockType</ID>
-    <ID>TrailingCommaOnDeclarationSite:ColoredBlockCompat.kt:ColoredBlockCompat</ID>
-    <ID>TrailingCommaOnDeclarationSite:CommandUtils.kt:CommandUtils$NameSource</ID>
-    <ID>TrailingCommaOnDeclarationSite:ComposterDisplay.kt:ComposterDisplay$DataType</ID>
-    <ID>TrailingCommaOnDeclarationSite:ContestRewardsClaimedEvent.kt:ContestRewardSet$( var jacobTickets: Int = 0, var carnivalTickets: Int = 0, var books: Map&lt;CropType, Int&gt; = emptyMap(), var medals: Map&lt;AnitaMedalProfit.MedalType, Int&gt; = emptyMap(), var overclockers: Int = 0, var bits: Int = 0 )</ID>
-    <ID>TrailingCommaOnDeclarationSite:CoroutineManager.kt:CompatCoroutineManager$( name: String, mutex: Mutex, timeout: Duration = 10.seconds, block: suspend CoroutineScope.() -&gt; Unit )</ID>
-    <ID>TrailingCommaOnDeclarationSite:CropAccessory.kt:CropAccessory</ID>
-    <ID>TrailingCommaOnDeclarationSite:CropCollectionType.kt:CropCollectionType</ID>
-    <ID>TrailingCommaOnDeclarationSite:CropDisplay.kt:CropLeaderboardStorage$( @Expose var enum: CropType?, @Expose var mode: EliteLeaderboardMode )</ID>
-    <ID>TrailingCommaOnDeclarationSite:CrystalHighlighterConfig.kt:CrystalHighlighterConfig$BoundingBoxType</ID>
-    <ID>TrailingCommaOnDeclarationSite:CrystalNucleusConfig.kt:CrystalNucleusConfig$CrystalNucleusMessageTypes</ID>
-    <ID>TrailingCommaOnDeclarationSite:CrystalNucleusTracker.kt:CrystalNucleusTracker.Data$( @Expose var runsCompleted: Long = 0L )</ID>
-    <ID>TrailingCommaOnDeclarationSite:CurrencyPerHotxPerk.kt:CurrencyPerHotxPerk$CurrencySpentDesign</ID>
-    <ID>TrailingCommaOnDeclarationSite:CustomTodo.kt:CustomTodo$TriggerMatcher</ID>
-    <ID>TrailingCommaOnDeclarationSite:CustomTodo.kt:CustomTodo$TriggerTarget</ID>
-    <ID>TrailingCommaOnDeclarationSite:DVDLogoRenderable.kt:LogoTrajectory$ApplicatorDirection</ID>
-    <ID>TrailingCommaOnDeclarationSite:DamageIndicatorConfig.kt:DamageIndicatorConfig$BossCategory</ID>
-    <ID>TrailingCommaOnDeclarationSite:DateFormat.kt:DateFormat</ID>
-    <ID>TrailingCommaOnDeclarationSite:DebugMobConfig.kt:DebugMobConfig$HowToShow</ID>
-    <ID>TrailingCommaOnDeclarationSite:DianaJson.kt:DianaJson$( @Expose @SerializedName("spade_types") val spadeTypes: List&lt;NeuInternalName&gt;, @Expose @SerializedName("sphinx_questions") val sphinxQuestions: Map&lt;String, String&gt;, @Expose @SerializedName("mythological_mobs") val mythologicalCreatures: Map&lt;String, MythologicalCreatureType&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:DisabledFeaturesJson.kt:DisabledFeaturesJson$( @Expose val features: Map&lt;String, Boolean&gt;? = mapOf() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:DiscordIPC.kt:DiscordIPC$Opcode</ID>
-    <ID>TrailingCommaOnDeclarationSite:DiscordStatus.kt:DiscordStatus</ID>
-    <ID>TrailingCommaOnDeclarationSite:DisplayConfig.kt:DisplayConfig$NumberFormat</ID>
-    <ID>TrailingCommaOnDeclarationSite:DnaAnalyzerSolver.kt:DnaAnalyzerSolver$Colors</ID>
-    <ID>TrailingCommaOnDeclarationSite:DragonFeatures.kt:DragonFeatures$EndType</ID>
-    <ID>TrailingCommaOnDeclarationSite:DragonType.kt:DragonType</ID>
-    <ID>TrailingCommaOnDeclarationSite:DungeonApi.kt:DungeonApi$DungeonBlessings</ID>
-    <ID>TrailingCommaOnDeclarationSite:DungeonFloor.kt:DungeonFloor</ID>
-    <ID>TrailingCommaOnDeclarationSite:EffectDurationChangeEvent.kt:EffectDurationChangeEvent$( val effect: NonGodPotEffect, val durationChangeType: EffectDurationChangeType, val duration: Duration? = null )</ID>
-    <ID>TrailingCommaOnDeclarationSite:EffectDurationChangeEvent.kt:EffectDurationChangeType</ID>
-    <ID>TrailingCommaOnDeclarationSite:EggFoundEvent.kt:EggFoundEvent$( val type: HoppityEggType, val slotIndex: Int? = null, val note: String? = null, val chatEvent: SkyHanniChatEvent.Allow? = null )</ID>
-    <ID>TrailingCommaOnDeclarationSite:EliteDisplayGenericConfig.kt:EliteDisplayGenericConfig$LeaderboardTextEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:EliteLeaderboardGenericConfig.kt:Gamemode</ID>
-    <ID>TrailingCommaOnDeclarationSite:EliteLeaderboards.kt:EliteLeaderboards</ID>
-    <ID>TrailingCommaOnDeclarationSite:EliteLeaderboards.kt:EliteLeaderboards$( private val displayName: String, val display: EliteLeaderboardDisplayBase&lt;*, *&gt;, val leaderboardType: KClass&lt;out EliteLeaderboardType&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:EliteLeaderboards.kt:EliteLeaderboards.EliteLeaderboardDisplayManager$FarmingWeightTextEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:EnderNode.kt:EnderNode</ID>
-    <ID>TrailingCommaOnDeclarationSite:ExperimentsAddonsHelper.kt:ExperimentsAddonsHelper$HelperPhase</ID>
-    <ID>TrailingCommaOnDeclarationSite:ExtendedChatColor.kt:ExtendedChatColor$( val rgb: Int )</ID>
-    <ID>TrailingCommaOnDeclarationSite:FannCost.kt:FannCost$( pattern: Pattern, groupName: String )</ID>
-    <ID>TrailingCommaOnDeclarationSite:FarmingContestPhase.kt:FarmingContestPhase</ID>
-    <ID>TrailingCommaOnDeclarationSite:FishingProfitTracker.kt:FishingProfitTracker.Data$( @Expose var totalCatchAmount: Long = 0L )</ID>
-    <ID>TrailingCommaOnDeclarationSite:FlareConfig.kt:FlareConfig$OutlineType</ID>
-    <ID>TrailingCommaOnDeclarationSite:ForagingTrackerConfig.kt:ForagingTrackerConfig$TreeGiftBonusDropCategory</ID>
-    <ID>TrailingCommaOnDeclarationSite:FossilMutation.kt:FossilMutation</ID>
-    <ID>TrailingCommaOnDeclarationSite:FossilType.kt:FossilType$( val displayName: String, val totalTiles: Int, val firstPercentage: String, val fossilShape: FossilShape, val possibleMutations: List&lt;FossilMutation&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:FramedRenderable.kt:FramedRenderable.Companion$( root: Renderable, config: AnimatedItemRenderableConfig&lt;T&gt;.() -&gt; Unit = { } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:FrogMaskWarningConfig.kt:FrogMaskWarningConfig$WarningType</ID>
-    <ID>TrailingCommaOnDeclarationSite:GenericIndividualTrackerConfig.kt:GenericIndividualTrackerConfig$( createType: () -&gt; Type )</ID>
-    <ID>TrailingCommaOnDeclarationSite:GetFromSackApi.kt:GetFromSackApi$CommandResult</ID>
-    <ID>TrailingCommaOnDeclarationSite:GriffinBurrowParticleFinder.kt:GriffinBurrowParticleFinder$ParticleType</ID>
-    <ID>TrailingCommaOnDeclarationSite:GuiRenderUtils.kt:GuiRenderUtils$( translateX: Float, translateY: Float, scale: Float )</ID>
-    <ID>TrailingCommaOnDeclarationSite:GuideRenderablePage.kt:GuideRenderablePage$( val paddingX: Int = 0, val paddingY: Int = 0 )</ID>
-    <ID>TrailingCommaOnDeclarationSite:HideSlayerSpawnParticles.kt:HideSlayerSpawnParticles$SpawnParticles</ID>
-    <ID>TrailingCommaOnDeclarationSite:HolographicEntities.kt:HolographicEntities$( vararg classes: KClass&lt;out T&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:HoppityCollectionStats.kt:HoppityCollectionStats$HighlightRabbitTypes</ID>
-    <ID>TrailingCommaOnDeclarationSite:HoppityEventSummaryConfig.kt:HoppityEventSummaryConfig$HoppityStat</ID>
-    <ID>TrailingCommaOnDeclarationSite:HotfConfig.kt:HotfConfig$LotteryDisplayVisibility</ID>
-    <ID>TrailingCommaOnDeclarationSite:HotmConfig.kt:HotmConfig$SkyMallDisplayVisibility</ID>
-    <ID>TrailingCommaOnDeclarationSite:HuntingProfitTracker.kt:HuntingProfitTracker.Data$( @Expose var totalMobsCaught: Long = 0, @Expose var totalShardsGained: Long = 0 )</ID>
-    <ID>TrailingCommaOnDeclarationSite:IslandTypeJson.kt:IslandBounds$( @Expose @SerializedName("max_x") val maxX: Int, @Expose @SerializedName("min_x") val minX: Int, @Expose @SerializedName("max_z") val maxZ: Int, @Expose @SerializedName("min_z") val minZ: Int )</ID>
-    <ID>TrailingCommaOnDeclarationSite:IslandTypeJson.kt:IslandJson$( @Expose val name: String, @Expose @SerializedName("api_name") val apiName: String? = null, @Expose @SerializedName("max_players") val maxPlayers: Int? = null, @Expose val bounds: IslandBounds? = null )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemAbility.kt:ItemAbility</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemCompat.kt:DyeCompat</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemDiscountsJson.kt:ItemDiscountsJson$( @Expose @SerializedName("item_price_coin_only") val itemPriceCoinOnly: Map&lt;String, Int&gt;, @Expose @SerializedName("items_to_discount_by_area") val itemsToDiscountByArea: ItemsToDiscountByArea, @Expose @SerializedName("scaling_discounts") val scalingDiscounts: ScalingDiscounts )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemDiscountsJson.kt:ItemsToDiscountByArea$( @Expose val Emissary: List&lt;String&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemDiscountsJson.kt:ScalingDiscounts$( @Expose val Emissary: Map&lt;String, Double&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ItemTrackerData.kt:ItemTrackerData.TrackedItem$( @Expose var timesGained: Long = 0, @Expose var totalAmount: Long = 0, @Expose var hidden: Boolean = false, var lastTimeUpdated: SimpleTimeMark = SimpleTimeMark.farPast() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:JacobContestsJson.kt:JacobContestsJson$( @Expose var knownContests: List&lt;EliteFarmingContest&gt; = listOf() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:KloonTerminal.kt:KloonTerminal</ID>
-    <ID>TrailingCommaOnDeclarationSite:LorenzColor.kt:LorenzColor</ID>
-    <ID>TrailingCommaOnDeclarationSite:Matrix.kt:Matrix.Companion$( height: Int, width: Int, function: (row: Int, column: Int) -&gt; Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MineshaftWaypointType.kt:MineshaftWaypointType</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventConfig.kt:MiningEventConfig$ShowType</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventData.kt:EventData$( @Expose @SerializedName("starts_at_min") val startMin: Long, @Expose @SerializedName("starts_at_max") val startMax: Long, @Expose @SerializedName("ends_at_min") val endMin: Long, @Expose @SerializedName("ends_at_max") val endMax: Long, @Expose @SerializedName("lobby_count") val lobbyCount: Int )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventData.kt:MiningEventData$( @Expose @SerializedName("event_datas") val eventData: Map&lt;IslandType, Map&lt;MiningEventType, EventData&gt;&gt;, @Expose @SerializedName("running_events") val runningEvents: Map&lt;IslandType, List&lt;RunningEventType&gt;&gt;, @Expose @SerializedName("total_lobbys") val totalLobbies: Map&lt;IslandType, Int&gt;, @Expose @SerializedName("update_in") val updateIn: Long, @Expose @SerializedName("curr_time") val currentTime: Long )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventData.kt:MiningEventDataReceive$( @Expose val success: Boolean, @Expose val data: MiningEventData, @Expose val cause: String )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventData.kt:MiningEventDataSend$( @Expose @SerializedName("server_type") val serverType: IslandType, @Expose @SerializedName("server_id") val serverId: String, @Expose val event: MiningEventType, @Expose @SerializedName("time_left") val timeRemaining: Long, @Expose @SerializedName("reporter_uuid") val uuid: String )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventData.kt:RunningEventType$( @Expose val event: MiningEventType, @Expose @SerializedName("ends_at") val endsAt: Long, @Expose @SerializedName("lobby_count") val lobbyCount: Int, @Expose @SerializedName("is_double") val isDoubleEvent: Boolean )</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningEventType.kt:MiningEventType.Companion$CompressFormat</ID>
-    <ID>TrailingCommaOnDeclarationSite:MiningNotifications.kt:MiningNotifications$MiningNotificationList</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuCarnivalShops.kt:NeuCarnivalTokenCostJson$( @Expose val name: String, @Expose val costs: List&lt;Int&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuCarnivalShops.kt:NeuMiscJson$( @Expose val carnivalTokenShops: Map&lt;String, Map&lt;String, NeuCarnivalTokenCostJson&gt;&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuEssenceShopJson.kt:NeuEssenceShopJson$( @Expose val name: String, @Expose val costs: List&lt;Int&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuGeorgeJson.kt:NeuGeorgeJson$( @Expose val prices: Map&lt;NeuInternalName, Double&gt;? )</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuPetNumsJson.kt:NeuPetNums$( @Expose val otherNums: List&lt;Double&gt;, @Expose val statNums: Map&lt;SkyblockStat, Double&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:NeuRepositoryReloadEvent.kt:NeuRepositoryReloadEvent$( override val manager: AbstractRepoManager&lt;NeuRepositoryReloadEvent&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:PestDisplay.kt:PestLeaderboardStorage$( @Expose var enum: PestType?, @Expose var mode: EliteLeaderboardMode )</ID>
-    <ID>TrailingCommaOnDeclarationSite:PestKillsLeaderboardConfig.kt:PestTypeWithAll</ID>
-    <ID>TrailingCommaOnDeclarationSite:PestSpawnTimer.kt:PestSpawnTimer$PestTitleIntention</ID>
-    <ID>TrailingCommaOnDeclarationSite:PetConfig.kt:PetConfig.PetItemsDisplay$( val icon: String, itemDisplayName: String, val item: String )</ID>
-    <ID>TrailingCommaOnDeclarationSite:PetsJson.kt:PetsJson$( @Expose val skins: PetsJsonSkins )</ID>
-    <ID>TrailingCommaOnDeclarationSite:PetsJson.kt:PetsJsonSkins$( @Expose @SerializedName("game_variants") val gameVariants: Map&lt;String, Set&lt;NeuInternalName&gt;&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:PowderChestTimerConfig.kt:PowderChestTimerConfig$LineMode</ID>
-    <ID>TrailingCommaOnDeclarationSite:PowderMiningConfig.kt:PowderMiningConfig$GoblinEggEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:PowderMiningGemstoneConfig.kt:PowderMiningGemstoneConfig$GemstoneFilterEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:Relay.kt:Relay</ID>
-    <ID>TrailingCommaOnDeclarationSite:RenderEntityOutlineEvent.kt:RenderEntityOutlineEvent$Type</ID>
-    <ID>TrailingCommaOnDeclarationSite:ReputationHelperConfig.kt:ReputationHelperConfig$ShowLocationEntry</ID>
-    <ID>TrailingCommaOnDeclarationSite:RiftWoodenButtonsJson.kt:ButtonSpots$( @Expose val position: LorenzVec, @Expose val buttons: List&lt;LorenzVec&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:RiftWoodenButtonsJson.kt:RiftWoodenButtonsJson$( @Expose val houses: Map&lt;String, List&lt;ButtonSpots&gt;&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:RngDropEnum.kt:RngDropEnum</ID>
-    <ID>TrailingCommaOnDeclarationSite:RotatingRenderable.kt:RotatingRenderable.Companion$( root: Renderable, config: AnimatedItemRenderableConfig&lt;C&gt;.() -&gt; Unit = { } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:ScoreboardData.kt:ScoreboardData$Season</ID>
-    <ID>TrailingCommaOnDeclarationSite:ScrapGFS.kt:ScrapGFS$( label: String, color: LorenzColor, value: Int )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SessionUptime.kt:GardenSession</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniBucketedItemTracker.kt:SkyHanniBucketedItemTracker$( name: String, createNewSession: () -&gt; BucketedData, getStorage: (ProfileSpecificStorage) -&gt; BucketedData, drawDisplay: (BucketedData) -&gt; List&lt;Searchable&gt;, extraDisplayModes: Map&lt;DisplayMode, (ProfileSpecificStorage) -&gt; BucketedData&gt; = emptyMap(), trackerConfig: () -&gt; GenericIndividualTrackerConfig&lt;ItemTrackerGenericConfig&gt;, customUptimeControl: Boolean = false )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent$( val entity: T, val x: Double, val y: Double, val z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent.Post$( entity: T, x: Double, y: Double, z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent.Pre$( entity: T, x: Double, y: Double, z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent.Specials$( entity: T, x: Double, y: Double, z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent.Specials.Post$( entity: T, x: Double, y: Double, z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniRenderEntityEvent.kt:SkyHanniRenderEntityEvent.Specials.Pre$( entity: T, x: Double, y: Double, z: Double )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyHanniTracker.kt:SkyHanniTracker$DisplayMode</ID>
-    <ID>TrailingCommaOnDeclarationSite:SkyhanniTimedTracker.kt:SkyhanniTimedTracker$( name: String, createNewSession: () -&gt; Data, private var storage: (ProfileSpecificStorage) -&gt; TimedTrackerData&lt;Data&gt;, drawDisplay: (Data) -&gt; List&lt;Searchable&gt;, extraDisplayModes: Set&lt;DisplayMode&gt; = emptySet(), customUptimeControl: Boolean = false, trackerConfig: () -&gt; Type )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SlayerType.kt:SlayerType</ID>
-    <ID>TrailingCommaOnDeclarationSite:StewHelper.kt:StewHelper$StewStatus</ID>
-    <ID>TrailingCommaOnDeclarationSite:Stopwatch.kt:Stopwatch$( private var duration: Duration = 0.seconds, private var paused: Boolean = true )</ID>
-    <ID>TrailingCommaOnDeclarationSite:SuperpairDataDisplay.kt:SuperpairDataDisplay$( sourceList: List&lt;FoundData&gt;, header: String, color: LorenzColor, displayAccessor: (FoundData) -&gt; String = { it.first?.reward.orEmpty() } )</ID>
-    <ID>TrailingCommaOnDeclarationSite:TabStringType.kt:TabStringType</ID>
-    <ID>TrailingCommaOnDeclarationSite:TimedGenericIndividualConfig.kt:TimedGenericIndividualConfig$( createType: () -&gt; Type )</ID>
-    <ID>TrailingCommaOnDeclarationSite:TrackerUtils.kt:TrackerUtils$( skillXpGained: Map&lt;SkillType, Long&gt; )</ID>
-    <ID>TrailingCommaOnDeclarationSite:TradeValue.kt:TradeValue$TradeSide</ID>
-    <ID>TrailingCommaOnDeclarationSite:TrevorTracker.kt:TrevorTracker$TrapperMobRarity</ID>
-    <ID>TrailingCommaOnDeclarationSite:TrophyRarity.kt:TrophyRarity</ID>
-    <ID>TrailingCommaOnDeclarationSite:UpdateManager.kt:UpdateManager$UpdateState</ID>
-    <ID>TrailingCommaOnDeclarationSite:VerminTracker.kt:VerminTracker.Data$( @Expose var count: MutableMap&lt;VerminType, Int&gt; = mutableMapOf() )</ID>
-    <ID>TrailingCommaOnDeclarationSite:VisitorApi.kt:VisitorApi$VisitorBlockReason</ID>
-    <ID>TrailingCommaOnDeclarationSite:VisitorTooltipParser.kt:VisitorTooltipParser$ParsingSection</ID>
-    <ID>TrailingCommaOnDeclarationSite:WeightDisplay.kt:WeightLeaderboardStorage$( @Expose var enum: FarmingWeight?, @Expose var mode: EliteLeaderboardMode )</ID>
     <ID>TypeParameterListSpacing:ApiResponse.kt:ApiResponse$&lt;T&gt;</ID>
     <ID>TypeParameterListSpacing:TitleManager.kt:TitleManager$&lt;reified E : Enum&lt;E&gt;&gt;</ID>
     <ID>UnnecessaryFilter:ExperimentationTableApi.kt:ExperimentationTableApi.ExperimentationTier$filter { (it % 9) !in when (sideSpace) { 1 -&gt; listOf(0, 8) 2 -&gt; listOf(0, 1, 7, 8) else -&gt; emptyList() } }</ID>

@@ -52,18 +52,10 @@ object RenderUtils {
         block: () -> T,
     ): T {
         RenderSystem.assertOnRenderThread()
-        setupFor?.let { Minecraft.getInstance().gameRenderer.lighting.setupFor(it) }
+        //~ if < 26.2 'lighting()' -> 'lighting'
+        setupFor?.let { Minecraft.getInstance().gameRenderer.lighting().setupFor(it) }
         return block()
     }
-
-    /**
-     * Returns a [Thread] that schedules a block on the Render Thread when started.
-     * Useful for [Runtime.addShutdownHook].
-     */
-    fun threadOnRenderThread(
-        setupFor: Lighting.Entry? = null,
-        block: () -> Any,
-    ) = Thread { scheduleOnRenderThread(setupFor, block) }
 
     /**
      * Runs or schedules a block on the Render Thread.
@@ -120,19 +112,7 @@ object RenderUtils {
         GuiRenderUtils.drawRect(x, y, x + 16, y + 16, color.rgb)
     }
 
-    fun Slot.drawBorder(color: LorenzColor) {
-        drawBorder(color.toColor())
-    }
-
     fun Slot.drawBorder(color: Color) {
-        drawBorder(color, x, y)
-    }
-
-    fun RenderGuiItemOverlayEvent.drawBorder(color: LorenzColor) {
-        drawBorder(color.toColor())
-    }
-
-    fun RenderGuiItemOverlayEvent.drawBorder(color: Color) {
         drawBorder(color, x, y)
     }
 
@@ -153,39 +133,6 @@ object RenderUtils {
         val x = ((GuiScreenUtils.mouseX - getAbsX()) / effectiveScale).toInt()
         val y = ((GuiScreenUtils.mouseY - getAbsY()) / effectiveScale).toInt()
         return x to y
-    }
-
-    @Deprecated("Use renderRenderable instead", ReplaceWith("renderRenderable(renderable, posLabel)"))
-    private fun Position.renderString0(string: String, offsetX: Int = 0, offsetY: Int = 0, centered: Boolean): Int =
-        DrawContextUtils.pushPopResult {
-            val display = "§f$string"
-            transform()
-            val fr = Minecraft.getInstance().font
-
-            DrawContextUtils.translate(offsetX + 1.0, offsetY + 1.0)
-
-            val finalX = if (centered) {
-                offsetX - (fr.width(string) / 2f)
-            } else 0f
-            GuiRenderUtils.drawString(display, finalX, 0f, -1)
-
-            return fr.width(display)
-        }
-
-    @Deprecated("Use renderRenderables instead", ReplaceWith("renderRenderables(renderables)"))
-    fun Position.renderStrings(list: List<String>, extraSpace: Int = 0, posLabel: String) {
-        if (list.isEmpty()) return
-
-        var offsetY = 0
-        var longestX = 0
-        for (s in list) {
-            val x = renderString0(s, offsetY = offsetY, centered = false)
-            if (x > longestX) {
-                longestX = x
-            }
-            offsetY += 10 + extraSpace
-        }
-        GuiEditManager.add(this, posLabel, longestX, offsetY)
     }
 
     fun Position.renderRenderables(
